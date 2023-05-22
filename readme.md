@@ -5,18 +5,18 @@ This repository contains scripts for analyzing diameter critical polygons on the
 Files
 
 process_results.py: This script includes functions for processing results, such as extracting data from files and directories, and creating polygons from the extracted data.
+
 dataset.py: This script contains functions for dataset construction and manipulation.
+
 asp.py: This script is dedicated to the calculation of distances, implementation of the diameter descent algorithm, data updating, and other related tasks.
+
 test.py: This is a placeholder for future test scripts.
-To understand the specifics of each function, refer to the docstrings within the scripts.
+
+
 
 Getting Started
 
 To use these scripts, clone the repository and ensure you have the required Python environment and dependencies installed.
-
-Contributing
-
-Contributions are welcome. Please open an issue to discuss your ideas or submit a Pull Request with your changes.
 
 License
 
