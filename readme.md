@@ -1,8 +1,11 @@
-Project Overview
+#Project Overview
 
 This repository contains scripts for analyzing diameter critical polygons on the sphere. 
+The code was written by [Qingsong Wang](https://www.qingsong-wang.org/). 
 
-Files
+See [Extremal spherical polytopes and Borsuk's conjecture](https://arxiv.org/pdf/2301.13076.pdf) by Mikhail Katz, Facundo Memoli and Qingsong Wang.
+
+#Files
 
 process_results.py: This script includes functions for processing results, such as extracting data from files and directories, and creating polygons from the extracted data.
 
@@ -14,11 +17,11 @@ test.py: This is a placeholder for future test scripts.
 
 
 
-Getting Started
+#Getting Started
 
 To use these scripts, clone the repository and ensure you have the required Python environment and dependencies installed.
 
-License
+$License
 
 MIT
 
