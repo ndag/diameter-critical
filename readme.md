@@ -24,6 +24,7 @@ To use these scripts, clone the repository and ensure you have the required Pyth
 # License
 
 The code was written by [Qingsong Wang](https://www.qingsong-wang.org/). Please credit Qingsong.
+
 MIT
 
 For more information, please refer to the code documentation and comments within each file. If you have any questions or issues, feel free to open an issue in this repository.
