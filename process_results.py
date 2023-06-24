@@ -128,39 +128,40 @@ three_n__minus_five_count = 0
 three_n__minus_five_table = []
 for polygon in result_3.keys():
 
-    graph_dict = dict(polygon.diam_graph.adj)
-    n_edge= subset_pairs_with_common_elements(graph_dict)
-    total = polygon.n_pts + subset_pairs_with_common_elements(graph_dict)
-    three_n__minus_five_value = 3* polygon.n_pts - n_edge
-    if three_n__minus_five_value < 5: 
+    # graph_dict = dict(polygon.diam_graph.adj)
+    # n_edge= subset_pairs_with_common_elements(graph_dict)
+    n_edges_in_diam_graph = polygon.diam_graph.number_of_edges()
+    # total = polygon.n_pts + subset_pairs_with_common_elements(graph_dict)
+    three_n__minus_five_value = 3* polygon.n_pts - n_edges_in_diam_graph
+    if three_n__minus_five_value != 5:
         print('three_n__minus_five_value: ', three_n__minus_five_value)  
         three_n__minus_five_table.append({'3f0-f1': three_n__minus_five_value, 'n_pts': polygon.n_pts, 'n_edge':polygon.n_edge, 'mFace': polygon.mFace,'n_mFace': polygon.n_mFace, 'n_tri': polygon.n_tri, 'n_tetra':polygon.n_tetrahedra, 'ridge':polygon.n_ridge, 'diam':polygon.s_diam, 'origin':result_3[polygon]})
         polygon.details()
         three_n__minus_five_count += 1
 
-        
-    if total %2 ==1:
-        parity_count +=1 
+
+    # if total %2 ==1:
+    #     parity_count +=1
 
 
-    # Compute a proper vertex coloring using the greedy algorithm
-    colors = coloring.greedy_color(polygon.diam_graph)
+    # # Compute a proper vertex coloring using the greedy algorithm
+    # colors = coloring.greedy_color(polygon.diam_graph)
 
-    # The chromatic number is the maximum number of colors used
-    chromatic_number = max(colors.values()) + 1
-    if chromatic_number > 5:
-        # print('polygon.data: ', polygon.data)
-        # print('chromatic_number: ', chromatic_number)
-        polygon.details()
-        print('borsuk counter example')
-        print("#############################################")
-        chromatic_count+= 1
+    # # The chromatic number is the maximum number of colors used
+    # chromatic_number = max(colors.values()) + 1
+    # if chromatic_number > 5:
+    #     # print('polygon.data: ', polygon.data)
+    #     # print('chromatic_number: ', chromatic_number)
+    #     polygon.details()
+    #     print('borsuk counter example')
+    #     print("#############################################")
+    #     chromatic_count+= 1
 
 
 
 print('three_n__minus_five_count: ', three_n__minus_five_count)
-print('parity_count: ', parity_count)
-print('chromatic_count: ', chromatic_count)
+# print('parity_count: ', parity_count)
+# print('chromatic_count: ', chromatic_count)
 
 for item in three_n__minus_five_table:
     print(item)

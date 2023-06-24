@@ -111,18 +111,18 @@ def one_step_diam_descent(data, distance_matrix, proximity, exit_threshold, min_
             for vec in tangent_vectors:
                 center += vec
             center_norm = np.linalg.norm(center)
-            if center_norm == 0.:
+            if math.isclose(center_norm, 0.0):
                 continue
 
             initial_vec = center / center_norm
             raw_gradient, min_dot_product = get_minmax_vec_miniball(tangent_vectors, initial_vec, data[key])
             gradient_norm = np.linalg.norm(raw_gradient)
-            if gradient_norm == 0.0:
+            if math.isclose(gradient_norm, 0.0):
                 continue
 
             unit_gradient = raw_gradient / gradient_norm
 
-            if min_dot_product == 0. or np.linalg.norm(raw_gradient) <= 10e-6:
+            if math.isclose(min_dot_product, 0.0) or math.isclose(np.linalg.norm(raw_gradient), 0.0):
                 continue
             step_length = armijo_rule_step_length(data, key, unit_gradient)
 
@@ -251,19 +251,19 @@ def get_diam(distance_matrix:np.ndarray) -> np.float64:
 
 def evaluation(data, distance_matrix, proximity_threshold):
     diam_indices = get_diam_indices(distance_matrix, proximity_threshold)
-    loss = 0.
+    loss = 0.0
     for key in diam_indices.keys():
         tangent_vectors = get_tangent_vectors(key, diam_indices[key], data)
         center = np.zeros(data[0].shape[0])
         for vec in tangent_vectors:
             center += vec
         center_norm = np.linalg.norm(center)
-        if center_norm == 0.:
+        if math.isclose(center_norm, 0.0):
             continue
         initial_vec = center/center_norm
         raw_gradient, min_dot_product = get_minmax_vec_miniball(tangent_vectors, initial_vec, data[key])
         loss += max(0, min_dot_product)
-    if loss == 0:
+    if math.isclose(loss, 0.0):
         print('all points that reaches the diamter are been held with proximity threshold = ', proximity_threshold)
     return loss
 
